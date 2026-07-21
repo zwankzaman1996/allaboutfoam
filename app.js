@@ -71,10 +71,10 @@ function generateCupSVG(drinkColor, liquidColor, accentColor, foamColor = "#FFFD
       <path d="M 22 45 L 28 122 C 28 130 72 130 72 122 L 78 45 Z" fill="${liquidColor}" />
       
       <!-- Liquid Gradient Reflection Overlay -->
-      <path d="M 22 45 L 28 122 C 28 130 72 130 72 122 L 78 45 Z" fill="url(#liquidGrad-${drinkColor.replace('#','')})" opacity="0.4" />
+      <path d="M 22 45 L 28 122 C 28 130 72 130 72 122 L 78 45 Z" fill="url(#liquidGrad-${drinkColor.replace('#', '')})" opacity="0.4" />
       
       <defs>
-        <linearGradient id="liquidGrad-${drinkColor.replace('#','')}" x1="0%" y1="0%" x2="100%" y2="100%">
+        <linearGradient id="liquidGrad-${drinkColor.replace('#', '')}" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stop-color="#ffffff" stop-opacity="0.3" />
           <stop offset="100%" stop-color="#000000" stop-opacity="0.5" />
         </linearGradient>
@@ -140,7 +140,7 @@ function renderDrinksGrid() {
 /* Toggle Drink Selection */
 function toggleDrinkSelection(drinkId) {
   const index = appState.selectedDrinks.indexOf(drinkId);
-  
+
   if (index > -1) {
     // Prevent deselecting if it's the only drink selected
     if (appState.selectedDrinks.length === 1) {
@@ -158,7 +158,7 @@ function toggleDrinkSelection(drinkId) {
 
   // Recalculate cup allocations for selected drinks
   redistributeCupsEqually();
-  
+
   // Re-render UI
   renderDrinksGrid();
   renderFoamPairing();
@@ -166,7 +166,7 @@ function toggleDrinkSelection(drinkId) {
   updateMiniCart();
 }
 
-/* Render Step 2: Foam Pairing Options per selected drink */
+/* Render Step 2: Foam Pairing Options via Drop-Down List per selected drink */
 function renderFoamPairing() {
   const container = document.getElementById("foamPairingContainer");
   if (!container) return;
@@ -180,6 +180,8 @@ function renderFoamPairing() {
     const drink = DRINKS_DATA.find(d => d.id === drinkId);
     const recFoamId = RECOMMENDED_FOAMS[drinkId];
     const selectedFoamId = appState.foamSelections[drinkId] || recFoamId || FOAMS_DATA[0].id;
+    const selectedFoam = FOAMS_DATA.find(f => f.id === selectedFoamId) || FOAMS_DATA[0];
+    const isRecommended = selectedFoamId === recFoamId;
 
     return `
       <div class="foam-drink-group">
@@ -191,36 +193,48 @@ function renderFoamPairing() {
           </div>
         </div>
 
-        <div class="foam-options-grid">
-          ${FOAMS_DATA.map(foam => {
-            const isFoamSelected = selectedFoamId === foam.id;
-            const isRecommended = foam.id === recFoamId;
-            return `
-              <div class="foam-card ${isFoamSelected ? 'selected' : ''}" 
-                   data-drink-id="${drinkId}" 
-                   data-foam-id="${foam.id}">
-                <div>
-                  <div class="foam-top-bar">
-                    ${isRecommended ? `<span class="foam-badge recommended">⭐ Recommended</span>` : `<span></span>`}
-                    <div class="foam-radio"></div>
-                  </div>
-                  <h4 class="foam-name">${foam.name}</h4>
-                  <div class="foam-subtitle">${foam.subtitle}</div>
-                  <p class="foam-desc">${foam.tasteProfile}</p>
-                </div>
-              </div>
-            `;
-          }).join('')}
+        <div class="foam-dropdown-wrapper">
+          <label class="foam-dropdown-label" for="foamSelect-${drinkId}">
+            <span>👑</span> Select Cold Foam Crown Dropdown:
+          </label>
+          <div class="foam-select-custom-container">
+            <select class="foam-dropdown-select" id="foamSelect-${drinkId}" data-drink-id="${drinkId}">
+              ${FOAMS_DATA.map(foam => {
+      const isRec = foam.id === recFoamId;
+      const recTag = isRec ? " ⭐ Recommended" : "";
+      const isSel = foam.id === selectedFoamId;
+      return `
+                  <option value="${foam.id}" ${isSel ? 'selected' : ''}>
+                    ${foam.name}${recTag}
+                  </option>
+                `;
+    }).join('')}
+            </select>
+            <div class="select-arrow">▼</div>
+          </div>
+        </div>
+
+        <!-- Selected Foam Info Card Preview -->
+        <div class="foam-selected-preview" style="border-left-color: ${selectedFoam.color}">
+          <div class="foam-preview-header">
+            <div class="foam-preview-title">
+              <span class="foam-preview-badge">${selectedFoam.name}</span>
+              ${isRecommended ? `<span class="foam-badge recommended">⭐ Recommended Match</span>` : ''}
+            </div>
+            <span class="foam-price-tag">${selectedFoam.id === 'normal_cream' ? 'Included Free' : '+RM 0.20 / cup'}</span>
+          </div>
+          <div class="foam-preview-subtitle">${selectedFoam.subtitle}</div>
+          <p class="foam-preview-desc">${selectedFoam.description || selectedFoam.tasteProfile}</p>
         </div>
       </div>
     `;
   }).join('');
 
-  // Click event listeners for foam cards
-  container.querySelectorAll('.foam-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const drinkId = card.getAttribute('data-drink-id');
-      const foamId = card.getAttribute('data-foam-id');
+  // Dropdown change listeners
+  container.querySelectorAll('.foam-dropdown-select').forEach(selectEl => {
+    selectEl.addEventListener('change', (e) => {
+      const drinkId = selectEl.getAttribute('data-drink-id');
+      const foamId = e.target.value;
       appState.foamSelections[drinkId] = foamId;
       renderFoamPairing();
       renderDrinksGrid();
@@ -265,11 +279,12 @@ function renderQuantityConfigurator() {
   const slider = document.getElementById("qtyRangeSlider");
   const presetBtns = document.querySelectorAll("#qtyPresetsContainer .preset-btn");
   const priceBadge = document.getElementById("pricePerCupBadge");
+  const currentQty = appState.totalQuantity;
 
-  if (qtyDisplay) qtyDisplay.innerText = appState.totalQuantity.toLocaleString();
-  if (slider) slider.value = appState.totalQuantity;
+  if (qtyDisplay) qtyDisplay.innerText = currentQty.toLocaleString();
+  if (slider) slider.value = currentQty;
 
-  const unitPrice = getPricePerCup(appState.totalQuantity);
+  const unitPrice = getPricePerCup(currentQty);
   if (priceBadge) {
     let hasPremiumFoam = appState.selectedDrinks.some(dId => (appState.foamSelections[dId] || RECOMMENDED_FOAMS[dId]) !== "normal_cream");
     const foamNote = hasPremiumFoam ? ` <span style="font-size:0.78rem; color:var(--accent-amber); font-weight:600; margin-left:4px;">(+RM0.20 foam fee)</span>` : '';
@@ -282,10 +297,27 @@ function renderQuantityConfigurator() {
     }
   }
 
+  // Highlight tier pills in discount banner based on quantity
+  const tierPills = document.querySelectorAll("#discountTiersGrid .tier-pill");
+  tierPills.forEach(pill => {
+    const tierVal = parseInt(pill.getAttribute("data-tier"));
+    if (tierVal === 100 && currentQty <= 100) {
+      pill.classList.add("active");
+    } else if (tierVal === 200 && currentQty >= 200 && currentQty < 300) {
+      pill.classList.add("active");
+    } else if (tierVal === 300 && currentQty >= 300 && currentQty < 600) {
+      pill.classList.add("active");
+    } else if (tierVal === 600 && currentQty >= 600) {
+      pill.classList.add("active");
+    } else {
+      pill.classList.remove("active");
+    }
+  });
+
   // Preset button active state
   presetBtns.forEach(btn => {
     const val = parseInt(btn.getAttribute("data-qty"));
-    if (val === appState.totalQuantity) {
+    if (val === currentQty) {
       btn.classList.add("active");
     } else {
       btn.classList.remove("active");
@@ -362,7 +394,7 @@ function renderAllocationRows() {
   if (btnReview) {
     if (remaining === 0) {
       btnReview.disabled = false;
-      btnReview.innerText = "Review & Confirm Order →";
+      btnReview.innerText = "Review & Confirm Order";
     } else {
       btnReview.disabled = true;
       btnReview.innerText = remaining > 0 ? `Assign ${remaining} more cups to proceed` : `Overallocated by ${Math.abs(remaining)} cups`;
@@ -550,7 +582,7 @@ function openSummaryModal() {
     unitPriceEl.innerText = hasPremiumFoam ? `RM ${baseUnitPrice.toFixed(2)} (+RM0.20) / cup` : `RM ${baseUnitPrice.toFixed(2)} / cup`;
   }
   if (subtotalEl) subtotalEl.innerText = `RM ${subtotal.toFixed(2)}`;
-  
+
   if (deliveryFeeEl) {
     if (fee === 0) {
       deliveryFeeEl.innerText = "FREE (Unlocked for >200 cups)";
@@ -646,11 +678,11 @@ function setupEventListeners() {
     appState.currentStep = 'Customer';
     document.querySelectorAll('.step-section').forEach(sec => sec.classList.remove('active'));
     document.getElementById('stepSectionCustomer')?.classList.add('active');
-    
+
     // Update total amount on payment button
     const payTotal = document.getElementById("payTotalAmount");
     if (payTotal) payTotal.innerText = `RM ${calculateOrderTotal().toFixed(2)}`;
-    
+
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 

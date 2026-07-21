@@ -591,6 +591,212 @@ body {
   border-left: 3px solid var(--accent-gold);
 }
 
+/* Foam Dropdown Select System */
+.foam-dropdown-wrapper {
+  margin-bottom: 1.25rem;
+}
+
+.foam-dropdown-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+}
+
+.foam-select-custom-container {
+  position: relative;
+  width: 100%;
+}
+
+.foam-dropdown-select {
+  width: 100%;
+  padding: 0.85rem 2.5rem 0.85rem 1.2rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  background: rgba(15, 20, 30, 0.9);
+  border: 2px solid var(--accent-gold);
+  border-radius: var(--radius-md);
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  box-shadow: 0 4px 15px rgba(255, 183, 3, 0.15);
+  transition: var(--transition-smooth);
+}
+
+.foam-dropdown-select:focus,
+.foam-dropdown-select:hover {
+  border-color: #ffd166;
+  box-shadow: 0 0 20px rgba(255, 183, 3, 0.35);
+  background: rgba(22, 28, 42, 0.95);
+}
+
+.foam-dropdown-select option {
+  background: #121722;
+  color: #fff;
+  padding: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.select-arrow {
+  position: absolute;
+  right: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--accent-gold);
+  font-size: 0.75rem;
+  pointer-events: none;
+}
+
+/* Foam Selected Preview Card */
+.foam-selected-preview {
+  background: rgba(15, 18, 26, 0.65);
+  border: 1px solid var(--glass-border);
+  border-left: 4px solid var(--accent-gold);
+  border-radius: var(--radius-md);
+  padding: 1.2rem;
+  margin-top: 1rem;
+  backdrop-filter: blur(12px);
+}
+
+.foam-preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.4rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.foam-preview-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.foam-preview-badge {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.foam-price-tag {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  background: rgba(255, 183, 3, 0.12);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 183, 3, 0.3);
+}
+
+.foam-preview-subtitle {
+  font-size: 0.8rem;
+  color: var(--accent-amber);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.foam-preview-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  margin-bottom: 0.75rem;
+}
+
+/* Step 3: Volume Discount Banner & Tier Pills */
+.discount-promo-banner {
+  background: linear-gradient(135deg, rgba(255, 183, 3, 0.12) 0%, rgba(251, 133, 0, 0.08) 100%);
+  border: 1px dashed var(--accent-gold);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  margin-bottom: 1.75rem;
+  text-align: left;
+}
+
+.discount-banner-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.discount-fire-icon {
+  font-size: 1.8rem;
+}
+
+.discount-banner-title strong {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--accent-gold);
+  display: block;
+}
+
+.discount-banner-title p {
+  font-size: 0.825rem;
+  color: var(--text-secondary);
+}
+
+.discount-tiers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.6rem;
+}
+
+.tier-pill {
+  background: rgba(15, 18, 26, 0.7);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: var(--transition-smooth);
+}
+
+.tier-pill.active {
+  background: rgba(255, 183, 3, 0.2);
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 15px rgba(255, 183, 3, 0.3);
+  transform: scale(1.02);
+}
+
+.tier-qty {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.tier-price {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  font-weight: 800;
+  margin: 0.15rem 0;
+}
+
+.tier-tag {
+  font-size: 0.68rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.tier-tag.save {
+  color: var(--success);
+  font-weight: 700;
+}
+
 /* STEP 3: QUANTITY SELECTION */
 .quantity-configurator {
   background: var(--bg-card);
