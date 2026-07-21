@@ -195,7 +195,7 @@ function renderFoamPairing() {
 
         <div class="foam-dropdown-wrapper">
           <label class="foam-dropdown-label" for="foamSelect-${drinkId}">
-            <span>👑</span> Select Cold Foam Crown Dropdown:
+            Select Cold Foam Crown Dropdown:
           </label>
           <div class="foam-select-custom-container">
             <select class="foam-dropdown-select" id="foamSelect-${drinkId}" data-drink-id="${drinkId}">
@@ -560,7 +560,7 @@ function openSummaryModal() {
       <div class="summary-item-card">
         <div class="summary-item-info">
           <h4>${drink.name}</h4>
-          <p>👑 Foam: <strong>${foam ? foam.name : 'Cold Foam'}</strong>${chosenFoamId !== 'normal_cream' ? ' <span style="color:var(--accent-amber); font-size:0.75rem; font-weight:700;">(+RM0.20/cup)</span>' : ''}</p>
+          <p>Foam: <strong>${foam ? foam.name : 'Cold Foam'}</strong>${chosenFoamId !== 'normal_cream' ? ' <span style="color:var(--accent-amber); font-size:0.75rem; font-weight:700;">(+RM0.20/cup)</span>' : ''}</p>
         </div>
         <div class="summary-item-qty" style="text-align: right;">
           <div>${cups} Cups</div>
