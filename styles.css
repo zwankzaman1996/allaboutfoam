@@ -298,6 +298,66 @@ body {
   margin: 0 auto;
 }
 
+/* Introductory Section Hero Card */
+.intro-hero-card {
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 3rem 2.5rem;
+  text-align: center;
+  backdrop-filter: blur(20px);
+  box-shadow: var(--glass-glow);
+  margin-bottom: 2rem;
+}
+
+.intro-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+  text-align: left;
+}
+
+.intro-feature-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  transition: var(--transition-smooth);
+}
+
+.intro-feature-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 183, 3, 0.4);
+  transform: translateY(-4px);
+}
+
+.intro-feature-icon {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(255, 183, 3, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.intro-feature-card h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.intro-feature-card p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
 /* STEP 1: DRINK SELECTION GRID */
 .drinks-grid {
   display: grid;

@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>All About Foam | Premium Pop-Up Drink Booth for Events</title>
   <meta name="description"
-    content="Book a luxury pop-up drink booth serving craft coffee, matcha, dark chocolate, and Thai teas topped with artisanal cold foam for your special event.">
+    content="Book a luxury pop-up drink booth serving craft Coffee and Matcha topped with artisanal cold foam for your special event.">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,7 +28,7 @@
     <a href="#" class="brand-logo">
       <div class="brand-text">
         <h1>ALL ABOUT FOAM</h1>
-        <p>Craft Refreshement | Pop-Up Stall</p>
+        <p>Craft Refreshment | Pop-Up Stall</p>
       </div>
     </a>
   </header>
@@ -36,12 +36,12 @@
   <main class="main-wrapper">
 
     <!-- STEP PROGRESS NAVIGATION -->
-    <nav class="stepper-nav" aria-label="Progress steps">
+    <nav class="stepper-nav" aria-label="Progress steps" id="stepperNav" style="display: none;">
       <div class="step-item active" data-step="1" id="navStep1">
         <div class="step-number">1</div>
         <div class="step-info">
           <span class="step-label">Step 1</span>
-          <span class="step-title">Select Drinks</span>
+          <span class="step-title">Total Quantity</span>
         </div>
       </div>
       <div class="step-divider"></div>
@@ -50,118 +50,76 @@
         <div class="step-number">2</div>
         <div class="step-info">
           <span class="step-label">Step 2</span>
-          <span class="step-title">Pick Cold Foams</span>
-        </div>
-      </div>
-      <div class="step-divider"></div>
-
-      <div class="step-item" data-step="3" id="navStep3">
-        <div class="step-number">3</div>
-        <div class="step-info">
-          <span class="step-label">Step 3</span>
-          <span class="step-title">Total Quantity</span>
-        </div>
-      </div>
-      <div class="step-divider"></div>
-
-      <div class="step-item" data-step="4" id="navStep4">
-        <div class="step-number">4</div>
-        <div class="step-info">
-          <span class="step-label">Step 4</span>
           <span class="step-title">Assign Cups</span>
         </div>
       </div>
     </nav>
 
-    <!-- STEP 1: DRINK SELECTION -->
-    <section class="step-section active" id="stepSection1">
-      <div class="section-header">
-        <span class="section-tag">Step 1 of 4</span>
-        <h2 class="section-title">Select Your Event Drinks</h2>
-        <p class="section-subtitle">Choose one or multiple signature handcrafted drinks to be served live at your event
-          pop-up booth.</p>
-      </div>
+    <!-- INTRODUCTORY SECTION -->
+    <section class="step-section active" id="stepSectionIntro">
+      <div class="intro-hero-card">
+        <span class="section-tag">Welcome to All About Foam</span>
+        <h2 class="section-title" style="font-size: 2.5rem; margin-top: 0.5rem;">Craft Pop-Up Drink Booth for Your Events</h2>
+        <p class="section-subtitle" style="max-width: 720px; margin-top: 1rem; line-height: 1.7;">
+          At <strong>All About Foam</strong>, we bring a luxury live beverage experience to your corporate functions, weddings, and private celebrations. 
+          We specialize in concentrated Espresso Coffee and Uji Ceremonial Matcha bases, freshly crowned with our signature complimentary artisanal cold foam.
+        </p>
 
-      <div class="drinks-grid" id="drinksGrid">
-        <!-- Rendered dynamically by app.js -->
-      </div>
+        <div class="intro-features-grid">
+          <div class="intro-feature-card">
+            <div class="intro-feature-icon">☕</div>
+            <h3>Concentrated Base</h3>
+            <p>Rich roasted Espresso Coffee & authentic Uji Ceremonial Matcha brewed to concentrated perfection.</p>
+          </div>
 
-      <div class="wizard-footer">
-        <div></div>
-        <button class="btn-primary" id="btnGoToStep2">
-          Next: Choose Cold Foams
-        </button>
-      </div>
-    </section>
+          <div class="intro-feature-card">
+            <div class="intro-feature-icon">☁️</div>
+            <h3>Complimentary Cold Foam</h3>
+            <p>Every single cup comes topped with a velvety, cloud-like artisanal cold foam crown included free.</p>
+          </div>
 
-    <!-- STEP 2: FOAM SELECTION -->
-    <section class="step-section" id="stepSection2">
-      <div class="section-header">
-        <span class="section-tag">Step 2 of 4</span>
-        <h2 class="section-title">Match Your Signature Cold Foams</h2>
-        <p class="section-subtitle">Pair each of your selected drinks with its dedicated cold foam crown. Read the
-          flavor notes below to imagine the delicious taste!</p>
-      </div>
-
-      <div class="foam-pairing-container" id="foamPairingContainer">
-        <!-- Dynamically rendered foam pairing cards for each selected drink -->
-      </div>
-
-      <div class="wizard-footer">
-        <button class="btn-secondary" id="btnBackToStep1">
-          Back to Drinks
-        </button>
-        <button class="btn-primary" id="btnGoToStep3">
-          Next: Select Quantity
-        </button>
-      </div>
-    </section>
-
-    <!-- STEP 3: QUANTITY SELECTION -->
-    <section class="step-section" id="stepSection3">
-      <div class="section-header">
-        <span class="section-tag">Step 3 of 4</span>
-        <h2 class="section-title">Select Total Order Quantity</h2>
-        <p class="section-subtitle">Minimum event order starts at 50 cups and increments up to 1,000 cups. All orders
-          include full pop-up booth & barista service!</p>
-      </div>
-
-      <div class="quantity-configurator">
-        <!-- Volume Discount Callout Banner -->
-        <div class="discount-promo-banner" id="discountPromoBanner">
-          <div class="discount-banner-title">
-            <strong>Order More, Get More Discount!</strong>
-            <p>Higher cup quantities unlock bigger savings per cup & free perks!</p>
+          <div class="intro-feature-card">
+            <div class="intro-feature-icon">🎪</div>
+            <h3>Full Live Service</h3>
+            <p>Includes complete pop-up booth setup and friendly baristas serving your event guests live.</p>
           </div>
         </div>
 
+        <div style="text-align: center; margin-top: 2.5rem;">
+          <button class="btn-primary" id="btnReadyToOrder" style="font-size: 1.15rem; padding: 1.1rem 2.75rem;">
+            I'm ready to place an order
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 1: QUANTITY SELECTION -->
+    <section class="step-section" id="stepSectionQty">
+      <div class="section-header">
+        <span class="section-tag">Step 1 of 2</span>
+        <h2 class="section-title">Select Total Order Quantity</h2>
+        <p class="section-subtitle">
+          We are serving Coffee and Matcha as Concentrated Base. Each drink will come with a complimentary artisanal cold foam.
+        </p>
+      </div>
+
+      <div class="quantity-configurator">
         <div class="quantity-display">
           <div class="big-quantity-num" id="totalQtyDisplay">100</div>
           <div class="quantity-unit">Total Event Cups</div>
           <div class="price-per-cup-info" id="pricePerCupBadge"
-            style="margin-top: 0.5rem; font-size: 0.95rem; color: var(--accent-gold); font-weight: 600;">🏷️ RM 5.00 /
-            cup</div>
+            style="margin-top: 0.5rem; font-size: 0.95rem; color: var(--accent-gold); font-weight: 600;">
+            <!-- Populated dynamically by app.js -->
+          </div>
         </div>
 
-        <!-- Preset Pill Buttons -->
-        <div class="quantity-presets" id="qtyPresetsContainer">
-          <button class="preset-btn" data-qty="50">50 Cups</button>
-          <button class="preset-btn active" data-qty="100">100 Cups</button>
-          <button class="preset-btn" data-qty="200">200 Cups</button>
-          <button class="preset-btn" data-qty="300">300 Cups</button>
-          <button class="preset-btn" data-qty="500">500 Cups</button>
-          <button class="preset-btn" data-qty="1000">1,000 Cups</button>
-        </div>
-
-        <!-- Interactive Range Slider -->
+        <!-- Interactive Range Slider (Min 50, Max 500, Step 50) -->
         <div class="slider-container">
-          <input type="range" class="custom-range" id="qtyRangeSlider" min="50" max="1000" step="50" value="100">
+          <input type="range" class="custom-range" id="qtyRangeSlider" min="50" max="500" step="50" value="100">
           <div class="slider-labels">
             <span>50 Cups (Min)</span>
             <span>250</span>
-            <span>500</span>
-            <span>750</span>
-            <span>1,000 Cups (Max)</span>
+            <span>500 Cups (Max)</span>
           </div>
         </div>
 
@@ -177,32 +135,27 @@
       </div>
 
       <div class="wizard-footer">
-        <button class="btn-secondary" id="btnBackToStep2">
-          Back to Foams
+        <button class="btn-secondary" id="btnBackToIntro">
+          Back to Overview
         </button>
-        <button class="btn-primary" id="btnGoToStep4">
-          Next: Assign Cup Distribution
+        <button class="btn-primary" id="btnGoToStepCup">
+          Next: Cup Distribution
         </button>
       </div>
     </section>
 
-    <!-- STEP 4: CUP DISTRIBUTION PER DRINK -->
-    <section class="step-section" id="stepSection4">
+    <!-- STEP 2: CUP DISTRIBUTION PER DRINK -->
+    <section class="step-section" id="stepSectionCup">
       <div class="section-header">
-        <span class="section-tag">Step 4 of 4</span>
-        <h2 class="section-title">Assign Cups to Selected Drinks</h2>
-        <p class="section-subtitle">Decide how many cups you want for each selected drink (in increments of 50). Total
-          assigned must equal your selected <strong id="allocationTargetText">100 cups</strong>.</p>
+        <span class="section-tag">Step 2 of 2</span>
+        <h2 class="section-title">Assign Cups to Coffee & Matcha</h2>
+        <p class="section-subtitle">Decide how many cups to assign to Coffee or Matcha in increments of 50.</p>
       </div>
 
       <div class="allocation-wrapper">
         <!-- Status Bar -->
         <div class="allocation-status-bar">
           <div class="status-counter-group">
-            <div class="counter-stat">
-              <label>Total</label>
-              <span id="targetQtyStat">100</span>
-            </div>
             <div class="counter-stat">
               <label>Allocated</label>
               <span id="allocatedQtyStat">100</span>
@@ -214,11 +167,11 @@
           </div>
 
           <button class="split-equal-btn" id="btnSplitEqually">
-            ⚡ Split Equally
+            Split Equally
           </button>
         </div>
 
-        <!-- Rows for each selected drink -->
+        <!-- Rows for Coffee and Matcha -->
         <div class="allocation-rows" id="allocationRowsContainer">
           <!-- Dynamically populated by app.js -->
         </div>
@@ -230,8 +183,8 @@
       </div>
 
       <div class="wizard-footer">
-        <button class="btn-secondary" id="btnBackToStep3">
-          Back to Total Quantity
+        <button class="btn-secondary" id="btnBackToQty">
+          Back to Quantity
         </button>
         <button class="btn-primary" id="btnReviewOrder">
           Review & Confirm Order
@@ -287,7 +240,6 @@
 
           <div class="payment-methods-grid" style="grid-template-columns: 1fr;">
             <div class="pay-method-card selected" data-method="fpx">
-              <span class="pay-icon">🏦</span>
               <span>Online FPX Banking</span>
             </div>
           </div>
@@ -310,7 +262,7 @@
               Back to Order Review
             </button>
             <button type="submit" class="btn-success" id="btnSubmitPayment">
-              🔒 Complete Payment (<span id="payTotalAmount">$950.00</span>)
+              Complete Payment (<span id="payTotalAmount">RM 500.00</span>)
             </button>
           </div>
         </form>
@@ -319,20 +271,20 @@
 
   </main>
 
-  <!-- MODAL 1: ORDER CONFIRMATION SUMMARY POP-UP (STEP 5) -->
+  <!-- MODAL 1: ORDER CONFIRMATION SUMMARY POP-UP -->
   <div class="modal-overlay" id="orderSummaryModal">
     <div class="modal-card">
       <div class="modal-header">
-        <h2>📋 Order Confirmation</h2>
+        <h2>Order Confirmation</h2>
         <button class="modal-close-btn" id="btnCloseSummaryModal">&times;</button>
       </div>
 
       <div class="modal-body">
         <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1.5rem;">
-          Please review your event drinks, foam choices, and cup allocations before finalizing your booking.
+          Please review your event drinks and cup allocations before finalizing your booking.
         </p>
 
-        <div class="summary-section-title">Selected Drinks & Foam Pairings</div>
+        <div class="summary-section-title">Selected Drinks & Cup Distribution</div>
         <div class="summary-list" id="summaryModalList">
           <!-- Dynamically populated -->
         </div>
@@ -347,16 +299,20 @@
             <span style="color: var(--success); font-weight: 700;">INCLUDED FREE</span>
           </div>
           <div class="price-row">
+            <span>Complimentary Cold Foam Crown</span>
+            <span style="color: var(--success); font-weight: 700;">INCLUDED FREE</span>
+          </div>
+          <div class="price-row">
             <span>Transportation & Delivery</span>
             <span id="summaryModalDeliveryFee" style="color: var(--success); font-weight: 700;">INCLUDED FREE</span>
           </div>
           <div class="price-row total">
             <span>Total Estimated Cost</span>
-            <span id="summaryModalFinalTotal">RM 950.00</span>
+            <span id="summaryModalFinalTotal">RM 500.00</span>
           </div>
         </div>
 
-        <!-- EXACT BUTTONS REQUIRED IN SPEC: (1) Change my mind, (2) Place my order -->
+        <!-- BUTTONS: (1) Change my mind, (2) Place my order -->
         <div class="summary-modal-actions">
           <button class="btn-change-mind" id="btnChangeMyMind">
             Change My Mind
@@ -365,7 +321,7 @@
             Place My Order
           </button>
         </div>
-        <br></br>
+        <br>
       </div>
     </div>
   </div>
@@ -383,7 +339,7 @@
 
         <!-- Simulated Email Receipt Toast -->
         <div class="email-toast">
-          <span>📬</span> Receipt has been emailed to <strong id="receiptSentEmail">customer@example.com</strong>
+          Receipt has been emailed to <strong id="receiptSentEmail">customer@example.com</strong>
         </div>
 
         <!-- Printable Official Receipt Card -->
@@ -414,13 +370,20 @@
 
           <div class="receipt-divider"></div>
 
+          <div class="summary-list" id="receiptItemsList" style="margin-bottom: 0.5rem;"></div>
+
+          <div class="receipt-row">
+            <span>DELIVERY FEE:</span>
+            <span id="receiptDeliveryFee">FREE</span>
+          </div>
+
           <div class="receipt-row">
             <span>TOTAL CUPS:</span>
             <span id="receiptTotalCupsCount">100 Cups</span>
           </div>
           <div class="receipt-total">
             <span>PAID IN FULL:</span>
-            <span id="receiptPaidTotal">RM 950.00</span>
+            <span id="receiptPaidTotal">RM 500.00</span>
           </div>
         </div>
 
